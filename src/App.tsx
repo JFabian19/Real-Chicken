@@ -313,11 +313,11 @@ export default function App() {
 
       <div className="px-5 pt-4 pb-3">
         {BANNER_PATH ? (
-          <div className="relative w-full rounded-[2rem] overflow-hidden shadow-sm aspect-[21/9] border border-gray-100">
+          <div className="relative w-full rounded-[2rem] overflow-hidden shadow-sm border border-gray-100">
             <img 
               src={BANNER_PATH} 
               alt="Banner Real Chicken" 
-              className="w-full h-full object-cover"
+              className="w-full h-auto block"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
