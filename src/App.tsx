@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { ShoppingBag, Plus, Minus, ChevronRight, X, Trash2, Utensils, Facebook, MapPin, Loader2, Gift, Star } from 'lucide-react';
+import { ShoppingBag, Plus, Minus, ChevronRight, X, Trash2, Utensils, Facebook, Instagram, MapPin, Loader2, Gift, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { fetchSheetData, submitSheetData, SheetDish, SheetCategory } from './services/googleSheets';
 
@@ -9,10 +9,12 @@ import { fetchSheetData, submitSheetData, SheetDish, SheetCategory } from './ser
 const RESTAURANTE_NAME = "Real CHICKEN";
 const RESTAURANTE_SLOGAN = "El verdadero pollo a la brasa";
 const WHATSAPP_NUMBER = "51988145351"; // Número de WhatsApp de Real CHICKEN
-const FACEBOOK_URL = "https://facebook.com/realchickentrujillo";
-const MAPS_URL = "";
+const FACEBOOK_URL = "https://www.facebook.com/PolleriaRea/?locale=es_LA";
+const TIKTOK_URL = "https://www.tiktok.com/@realchicken_polleria";
+const INSTAGRAM_URL = "";
+const MAPS_URL = "https://maps.app.goo.gl/MDtHKXYqaHrMrASPA";
 const LOGO_FOOTER_PATH = "/footer.jpeg"; // Ruta de tu logo en public/
-const BANNER_PATH = ""; // Se elimina para usar el placeholder de "Acá va imagen"
+const BANNER_PATH = "/banner.jpg"; // Usar el banner subido
 const MARQUEE_TEXT = "👑 EL VERDADERO POLLO A LA BRASA • 🍗 SABOR QUE REINA • 🔥 ¡PIDE TU MOSTRITO YA! • 🍟 BRASAS Y PASIÓN ";
 const BIRTHDAY_COPY = "¡Celebra como un rey! 👑 Registra tu cumpleaños aquí y llévate una porción de papas doradas de cortesía. 🍟";
 // ==========================================
@@ -45,8 +47,8 @@ const LOCAL_DISHES = [
   { "categoría": "Broaster", "nombre del plato": "4 Piezas de Pollo", "descripción": "Pollo broaster crujiente. Incluye papa frita y ensalada.", "precio": "S/.40", "URL de imagen": "" },
   { "categoría": "Broaster", "nombre del plato": "2 Piezas de Pollo", "descripción": "Pollo broaster crujiente. Incluye papa frita y ensalada.", "precio": "S/.23", "URL de imagen": "" },
   { "categoría": "Parrillas", "nombre del plato": "1/4 de Pollo a la Parrilla", "descripción": "Incluye papas fritas y ensalada.", "precio": "S/.23", "URL de imagen": "" },
-  { "categoría": "Parrillas", "nombre del plato": "1 Chuleta", "descripción": "250 gr. Incluye papas fritas y ensalada.", "precio": "S/.26", "URL de imagen": "" },
-  { "categoría": "Parrillas", "nombre del plato": "1 Churrasco", "descripción": "250 gr. Incluye papas fritas y ensalada.", "precio": "S/.28", "URL de imagen": "" },
+  { "categoría": "Parrillas", "nombre del plato": "1 Chuleta", "descripción": "250 gr. Incluye papas fritas y ensalada.", "precio": "S/.26", "URL de imagen": "chuleta.png" },
+  { "categoría": "Parrillas", "nombre del plato": "1 Churrasco", "descripción": "250 gr. Incluye papas fritas y ensalada.", "precio": "S/.28", "URL de imagen": "churrasco.png" },
   { "categoría": "Parrillas", "nombre del plato": "1 Filete de Pierna", "descripción": "Incluye papas fritas y ensalada.", "precio": "S/.22", "URL de imagen": "" },
   { "categoría": "Parrillas", "nombre del plato": "Costilla Chica", "descripción": "450 gr. Incluye papas fritas y ensalada.", "precio": "S/.40", "URL de imagen": "" },
   { "categoría": "Parrillas", "nombre del plato": "Costillar Completo", "descripción": "950 gr. Incluye papas fritas y ensalada.", "precio": "S/.79", "URL de imagen": "" },
@@ -87,6 +89,8 @@ const LOCAL_DISHES = [
 // Mapa de imágenes locales por defecto para platos conocidos (vacío por defecto para la plantilla)
 const LOCAL_IMAGES: Record<string, string> = {
   // "Nombre del Plato": "nombre_imagen.jpg",
+  "1 Chuleta": "chuleta.png",
+  "1 Churrasco": "churrasco.png"
 };
 
 
@@ -306,16 +310,46 @@ export default function App() {
           <h1 className="font-title text-[28px] text-primary leading-none tracking-wide">{RESTAURANTE_NAME}</h1>
           <span className="font-slogan text-[11px] text-secondary font-bold tracking-wider mt-0.5">{RESTAURANTE_SLOGAN}</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           {FACEBOOK_URL && (
             <motion.a
               href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileTap={{ scale: 0.95 }}
-              className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center text-primary cursor-pointer"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="w-9 h-9 bg-[#1877F2]/10 hover:bg-[#1877F2]/20 rounded-full flex items-center justify-center text-[#1877F2] transition-colors cursor-pointer shadow-sm"
+              title="Facebook"
             >
-              <Facebook size={22} />
+              <Facebook size={18} />
+            </motion.a>
+          )}
+          {TIKTOK_URL && (
+            <motion.a
+              href={TIKTOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="w-9 h-9 bg-black/10 hover:bg-black/20 rounded-full flex items-center justify-center text-black transition-colors cursor-pointer shadow-sm"
+              title="TikTok"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.73.9 1.69 1.63 2.77 2.13v3.91c-1.63-.07-3.21-.76-4.45-1.85-.06 2.37.03 4.74-.02 7.12-.08 2.05-.72 4.14-2.11 5.67-1.74 2-4.48 2.92-7.07 2.4-2.73-.43-5.26-2.5-6.04-5.21-.86-2.91.13-6.22 2.47-8.08 1.64-1.32 3.8-1.92 5.92-1.7v4.03c-1.39-.23-2.88.19-3.79 1.25-.9 1.02-1.07 2.53-.47 3.75.54 1.15 1.76 1.95 3.03 1.98 1.48.06 2.9-.84 3.39-2.24.23-.7.18-1.45.19-2.18-.01-3.66.01-7.3-.01-10.96z"/>
+              </svg>
+            </motion.a>
+          )}
+          {INSTAGRAM_URL && (
+            <motion.a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="w-9 h-9 bg-[#E1306C]/10 hover:bg-[#E1306C]/20 rounded-full flex items-center justify-center text-[#E1306C] transition-colors cursor-pointer shadow-sm"
+              title="Instagram"
+            >
+              <Instagram size={18} />
             </motion.a>
           )}
           {MAPS_URL && (
@@ -323,20 +357,22 @@ export default function App() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileTap={{ scale: 0.95 }}
-              className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center text-primary cursor-pointer"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="w-9 h-9 bg-[#EA4335]/10 hover:bg-[#EA4335]/20 rounded-full flex items-center justify-center text-[#EA4335] transition-colors cursor-pointer shadow-sm"
+              title="Ubicación"
             >
-              <MapPin size={22} />
+              <MapPin size={18} />
             </motion.a>
           )}
           <motion.div
             onClick={() => cartCount > 0 && setShowSummary(true)}
             whileTap={{ scale: 0.95 }}
-            className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center relative cursor-pointer"
+            className="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center relative cursor-pointer ml-1 text-primary hover:bg-primary/20 transition-colors"
           >
-            <ShoppingBag size={22} className="text-primary" />
+            <ShoppingBag size={18} />
             {cartCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 min-w-[20px] h-5 bg-secondary text-white rounded-full text-[10px] font-bold flex items-center justify-center px-1">
+              <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 bg-secondary text-white rounded-full text-[9px] font-bold flex items-center justify-center px-1">
                 {cartCount}
               </span>
             )}
@@ -370,16 +406,29 @@ export default function App() {
       </div>
 
       <div className="px-5 pt-4 pb-3">
-        <div className="relative w-full rounded-[2rem] overflow-hidden shadow-sm bg-gradient-to-br from-primary/5 via-secondary/10 to-primary/10 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-6 text-center min-h-[140px]">
-          <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
-          <div className="relative z-10 flex flex-col items-center justify-center">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-2 animate-pulse text-primary">
-              <Utensils size={20} />
-            </div>
-            <p className="font-title text-primary text-[24px] tracking-wide leading-none mb-1">Acá va imagen</p>
-            <p className="font-slogan text-secondary text-[11px] font-bold uppercase tracking-wider">{RESTAURANTE_SLOGAN}</p>
+        {BANNER_PATH ? (
+          <div className="relative w-full rounded-[2rem] overflow-hidden shadow-sm aspect-[21/9] border border-gray-100">
+            <img 
+              src={BANNER_PATH} 
+              alt="Banner Real Chicken" 
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
           </div>
-        </div>
+        ) : (
+          <div className="relative w-full rounded-[2rem] overflow-hidden shadow-sm bg-gradient-to-br from-primary/5 via-secondary/10 to-primary/10 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-6 text-center min-h-[140px]">
+            <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
+            <div className="relative z-10 flex flex-col items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-2 animate-pulse text-primary">
+                <Utensils size={20} />
+              </div>
+              <p className="font-title text-primary text-[24px] tracking-wide leading-none mb-1">Acá va imagen</p>
+              <p className="font-slogan text-secondary text-[11px] font-bold uppercase tracking-wider">{RESTAURANTE_SLOGAN}</p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="px-5 py-3 overflow-x-auto no-scrollbar">

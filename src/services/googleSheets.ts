@@ -1,7 +1,7 @@
 import Papa from 'papaparse';
 
 // Coloca aquí tu ID de Google Sheets (lo encuentras en la URL de tu hoja de cálculo)
-const SHEET_ID = '';
+const SHEET_ID = '1NT1aE6wmsKo79guiTGC_bCy7d64fKxUkxxemiPi6V0Q';
 
 export interface SheetDish {
   categoría: string;
