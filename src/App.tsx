@@ -88,8 +88,27 @@ const LOCAL_DISHES = [
 // Mapa de imágenes locales por defecto para platos conocidos (vacío por defecto para la plantilla)
 const LOCAL_IMAGES: Record<string, string> = {
   // "Nombre del Plato": "nombre_imagen.jpg",
+  "1 Pollo Entero": "1 pollo.png",
+  "1/2 Pollo": "medio pollo.png",
+  "1/4 Pollo": "cuarto de pollo.png",
+  "1/8 Pollo": "octavo pollo.png",
+  "1 Mini Mostrito": "Mini mostrito.png",
+  "1 Mostrito": "mostrito.png",
+  "1 Mostrito Parrillero": "mostrito parrillera.png",
+  "1 Mostrito Power Parrillero": "Mostrito Power Parrillero.png",
+  "1 Combo Familiar": "combo familiar.png",
+  "Combo Bravo": "Combo Bravo.png",
+  "Combito": "Combito.png",
+  "8 Piezas de Pollo": "8 Piezas de Pollo.png",
+  "4 Piezas de Pollo": "4 Piezas de Pollo.png",
+  "2 Piezas de Pollo": "2 Piezas de Pollo.png",
+  "1/4 de Pollo a la Parrilla": "Pollo a la Parrilla.png",
   "1 Chuleta": "chuleta.png",
-  "1 Churrasco": "churrasco.png"
+  "1 Churrasco": "churrasco.png",
+  "1 Filete de Pierna": "1 Filete de Pierna.webp",
+  "Costilla Chica": "costilla chica.png",
+  "Costillar Completo": "Costillar Completo.png",
+  "1 Combo Parrillero Mixto": "Combo Parrillero Mixto.png"
 };
 
 
